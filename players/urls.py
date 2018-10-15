@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import path, include
 from . import views
 
-#app_name = 'players'
+app_name = 'players'
 
 urlpatterns = [
 	
