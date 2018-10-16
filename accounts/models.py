@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 class Profile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(User, related_name = "profile", on_delete=models.CASCADE)
 	munny = models.IntegerField(default=1000,null=True)
 	wins = models.IntegerField(default=0,null=True)
 	losses = models.IntegerField(default=0,null=True)

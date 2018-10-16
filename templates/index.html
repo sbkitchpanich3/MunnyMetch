@@ -5,7 +5,9 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
+  <p>Hi {{ user.profile.user.username }}!</p>
+  <p>Your munny is currently {{ user.profile.munny }}</p>
+  {{ user.profile.munny | add:"500" }}
   <p><a href="{% url 'logout' %}">logout</a></p>
 {% else %}
   <p>You are not logged in</p>
