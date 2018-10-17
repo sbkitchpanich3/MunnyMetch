@@ -6,8 +6,12 @@
 {% block content %}
 {% if user.is_authenticated %}
   <p>Hi {{ user.profile.user.username }}!</p>
-  <p>Your munny is currently {{ user.profile.munny }}</p>
-  {{ user.profile.munny | add:"500" }}
+  <p>Your munny is currently {{ user.profile.munny }}</p><br>
+  <form action="{% url 'players:bet' %}" method="post">
+  	{% csrf_token %}
+  	<input type="number" name="bet" id="bet">
+  	<input type="submit" value="Bet!">
+  </form>
   <p><a href="{% url 'logout' %}">logout</a></p>
 {% else %}
   <p>You are not logged in</p>
