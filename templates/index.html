@@ -1,20 +1,27 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Munny Metch{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
-  <p>Hi {{ user.profile.user.username }}!</p>
-  <p>Your munny is currently {{ user.profile.munny }}</p><br>
-  <form action="{% url 'players:bet' %}" method="post">
-  	{% csrf_token %}
-  	<input type="number" name="bet" id="bet">
-  	<input type="submit" value="Bet!">
-  </form>
-  <p><a href="{% url 'logout' %}">logout</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
+  <div class="container">
+    <div class="justify-content-center">
+      <h1>Hi {{ user.profile.user.username }}!</h1>
+      <p>Your munny is currently {{ user.profile.munny }}</p>
+      <div class="form-group">
+      <form action="{% url 'players:betadd' %}" method="post">
+      	{% csrf_token %}
+      	<input type="number" name="bet">
+      	<input type="submit" value="Bet Add!">
+      </form>
+    </div>
+      <form action="{% url 'players:betminus' %}" method="post">
+        {% csrf_token %}
+        <input type="number" name="bet">
+        <input type="submit" value="Bet Minus!">
+      </form>
+    </div>
+  </div>
 {% endif %}
 {% endblock %}

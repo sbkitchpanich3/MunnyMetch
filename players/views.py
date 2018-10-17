@@ -11,8 +11,27 @@ from accounts.models import Profile
 def index(request):
 	return HttpResponse("<h1>test</h1>")
 
-def bet(request):
-	profile_instance = get_object_or_404(Profile, Profile.objects.get(id=3))
+def betadd(request):
+	 
+	profile_instance = Profile.objects.get(user=request.user)
+
+	if request.method == 'POST':
+
+		bet_form = BetForm(request.POST)
+
+		if bet_form.is_valid():
+
+			profile_instance.munny = profile_instance.munny + bet_form.cleaned_data['bet']
+			profile_instance.save()
+
+			return HttpResponseRedirect(reverse('index'))
+
+		else:
+			return HttpResponseRedirect(reverse('index'))
+			
+def betminus(request):
+	
+	profile_instance = Profile.objects.get(user=request.user)
 
 	if request.method == 'POST':
 
@@ -21,6 +40,10 @@ def bet(request):
 		if bet_form.is_valid():
 
 			profile_instance.munny = profile_instance.munny - bet_form.cleaned_data['bet']
+			profile_instance.save()
 
+			return HttpResponseRedirect(reverse('index'))
+
+		else:
 			return HttpResponseRedirect(reverse('index'))
 

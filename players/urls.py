@@ -22,6 +22,7 @@ urlpatterns = [
 	
 	#/players/
     path('', views.index, name='index'),
-    path('bet/', views.bet, name='bet'),
+    path('betadd/', views.betadd, name='betadd'),
+    path('betminus/', views.betminus, name='betminus'),
 
 ]
