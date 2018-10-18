@@ -24,5 +24,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('betadd/', views.betadd, name='betadd'),
     path('betminus/', views.betminus, name='betminus'),
+    path('challenge/', views.challenge, name='challenge'),
 
 ]

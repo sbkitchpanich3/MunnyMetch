@@ -6,22 +6,36 @@
 {% block content %}
 {% if user.is_authenticated %}
   <div class="container">
-    <div class="justify-content-center">
-      <h1>Hi {{ user.profile.user.username }}!</h1>
-      <p>Your munny is currently {{ user.profile.munny }}</p>
-      <div class="form-group">
+    <h1>Hi {{ user.profile.user.username }}!</h1>
+    <p>Your munny is currently {{ user.profile.munny }}</p>
+    
+    <div class="form-group">
       <form action="{% url 'players:betadd' %}" method="post">
-      	{% csrf_token %}
-      	<input type="number" name="bet">
-      	<input type="submit" value="Bet Add!">
+        {% csrf_token %}
+        <input type="number" name="bet">
+        <input type="submit" value="Bet Add!">
       </form>
     </div>
+      
+    <div class="form-group">
       <form action="{% url 'players:betminus' %}" method="post">
         {% csrf_token %}
         <input type="number" name="bet">
         <input type="submit" value="Bet Minus!">
       </form>
     </div>
+
+    <div class="form-group">
+      <form action="{% url 'players:challenge' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="player">
+        <input type="submit" value="Challenge!">
+        {{ form.errors }}
+        {{ form.non_field_errors }}
+      </form>
+    </div>
+
+
   </div>
 {% endif %}
 {% endblock %}
