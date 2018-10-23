@@ -57,6 +57,7 @@ def challenge(request):
 		if player_form.is_valid():
 			# ['player'] field has to match what's in the index template's form name.  BULLSHIT!
 			# This is responsible for getting the POST data btw.
+			# name is getting the clean version of the player attribute from the PlayerForm.
 			name = player_form.cleaned_data['player']
 			# player_object grabs the user from the User class using the username provided by the POST data.
 			try:

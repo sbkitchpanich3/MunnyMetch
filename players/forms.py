@@ -20,8 +20,4 @@ class BetForm(forms.Form):
 class PlayerForm(forms.Form):
 
 	player = forms.CharField(max_length = 100)
-
-	def clean_player(self):
-		
-		cleanplayer = self.cleaned_data['player']
-		return cleanplayer
+	#bet = forms.IntegerField(initial = 0)
