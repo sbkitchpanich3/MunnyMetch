@@ -20,4 +20,4 @@ class BetForm(forms.Form):
 class PlayerForm(forms.Form):
 
 	player = forms.CharField(max_length = 100)
-	#bet = forms.IntegerField(initial = 0)
+	bet = forms.IntegerField(initial = 0)

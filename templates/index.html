@@ -12,6 +12,7 @@
     <div class="form-group">
       <form action="{% url 'players:betadd' %}" method="post">
         {% csrf_token %}
+        {{ bet_form.errors }}
         <input type="number" name="bet">
         <input type="submit" value="Bet Add!">
       </form>
@@ -20,18 +21,9 @@
     <div class="form-group">
       <form action="{% url 'players:betminus' %}" method="post">
         {% csrf_token %}
+        {{ bet_form.errors }}
         <input type="number" name="bet">
         <input type="submit" value="Bet Minus!">
-      </form>
-    </div>
-
-    <div class="form-group">
-      <form action="{% url 'players:challenge' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="player">
-        <input type="submit" value="Challenge!">
-        {{ form.errors }}
-        {{ form.non_field_errors }}
       </form>
     </div>
 
