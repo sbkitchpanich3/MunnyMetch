@@ -7,7 +7,7 @@
 Who are we challenging today?<br>
 
 <div class="form-group">
-      <form action="{% url 'players:challenge' %}" method="post">
+      <form action="{% url 'players:confirm' %}" method="post">
         {% csrf_token %}
         {{ player_form.as_p }}
         {{ player_form.errors }}
@@ -15,5 +15,8 @@ Who are we challenging today?<br>
         <input type="submit" value="Challenge!" />
       </form>
 </div>
+
+
+
 
 {% endblock %}

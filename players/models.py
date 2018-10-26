@@ -9,3 +9,8 @@ class Stats(models.Model):
 	losses = models.IntegerField(default=0)
 	matches = models.IntegerField(default=0)
 
+class Challenge(models.Model):
+	sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
+	receiver = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
+	munny = models.IntegerField(default=0)
+

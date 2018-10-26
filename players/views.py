@@ -53,6 +53,47 @@ def betminus(request):
 def challenge(request):
 # User works by calling get(username='')
 
+	if request.method == 'GET':
+	
+		player_form = PlayerForm()
+		return render(request, 'challenge.html', {'player_form': player_form})
+
+
+
+
+	else:
+
+		player_form = PlayerForm()
+		return render(request, 'challenge.html', {'player_form': player_form})
+
+#old code that worked, its now in the confirm view.
+
+		# current_player = Profile.objects.get(user=request.user)
+		# player_form = PlayerForm(request.POST)
+
+		# if player_form.is_valid():
+			
+		# 	name = player_form.cleaned_data['player']
+		# 	bet = player_form.cleaned_data['bet']
+			
+		# 	try:
+		# 		player_object = User.objects.get(username__iexact=name)
+		# 	except User.DoesNotExist:
+		# 		return HttpResponse("My dude that person isn't a player!")
+			
+		# 	ky = player_object.id
+			
+		# 	player_by_id = Profile.objects.get(user=ky)
+		# 	return render(request, 'challenge.html', {'player_form': player_form})
+
+		# else:
+
+		# 	player_form = PlayerForm()
+		# 	return render(request, 'challenge.html', {'player_form': player_form})
+
+def confirm(request):
+# User works by calling get(username='')
+
 	if request.method == 'POST':
 		#get the Profile of the currently logged in user.
 		current_player = Profile.objects.get(user=request.user)
@@ -73,15 +114,15 @@ def challenge(request):
 			ky = player_object.id
 			# I can't pass in the user directly for some fucking reason so it's gotta be done this way GRRR D:<
 			player_by_id = Profile.objects.get(user=ky)
-			return render(request, 'challenge.html', {'player_form': player_form})
+			return render(request, 'confirm.html', {'player_form': player_form})
 
 		else:
 
 			player_form = PlayerForm()
-			return render(request, 'challenge.html', {'player_form': player_form})
+			return render(request, 'confirm.html', {'player_form': player_form})
 
 	else:
 
 		player_form = PlayerForm()
-		return render(request, 'challenge.html', {'player_form': player_form})
+		return render(request, 'confirm.html', {'player_form': player_form})
 
