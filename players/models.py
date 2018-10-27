@@ -7,5 +7,5 @@ class Challenge(models.Model):
 	receiver = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, related_name="receiver")
 	bet = models.IntegerField(default=0)
 	status = models.IntegerField(default=0)
-	result = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, null=True, related_name="winner")
-
+	p1result = models.BooleanField(null=True)
+	p2result = models.BooleanField(null=True)
