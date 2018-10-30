@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Challenges!</h1>
+<ul>
+{% for challenge in object_list %}
+    <li>Challenger: {{ challenge.sender }} <br> 
+    Challenged: {{ challenge.receiver }} <br>
+	Bet: {{ challenge.bet }}</li>
+	Status: 
+	{% if challenge.status == 0 %} Pending
+	{% elif challenge.status == 1 %} In Progress
+	{% else %} Finished
+	{% endif %}
+{% empty %}
+    <li>No challenges yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}

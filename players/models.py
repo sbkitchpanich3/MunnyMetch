@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from django.urls import reverse
 
+#todo: make challenge objects return a different name for admin purposes 10/29/18
+
 class Challenge(models.Model):
 	sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, related_name="sender")
 	receiver = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, related_name="receiver")

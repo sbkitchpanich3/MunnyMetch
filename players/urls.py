@@ -25,6 +25,6 @@ urlpatterns = [
     path('betadd/', views.betadd, name='betadd'),
     path('betminus/', views.betminus, name='betminus'),
     path('challenge/', views.challenge, name='challenge'),
-    path('confirm/', views.confirm, name='confirm'),
-
+    path('confirm/', views.confirm2, name='confirm'),
+    path('challengelist/', views.ListView.as_view(), name='challengelist'),
 ]
