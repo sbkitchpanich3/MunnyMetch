@@ -27,4 +27,6 @@ urlpatterns = [
     path('challenge/', views.challenge, name='challenge'),
     path('confirm/', views.confirm2, name='confirm'),
     path('challengelist/', views.ListView.as_view(), name='challengelist'),
+    path('waitingchallenges/', views.WaitingView.as_view(), name='waitingchallenges'),
+    path('challenge/<pk>/', views.DetailView.as_view(), name='detail'),
 ]

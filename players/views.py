@@ -23,6 +23,19 @@ class ListView(generic.ListView):
 		result = Challenge.objects.filter(sender=self.request.user) | Challenge.objects.filter(receiver=self.request.user)
 		return result
 
+class WaitingView(generic.ListView):
+	template_name = 'challengelist.html'
+	context_object_name = 'challenges'
+
+	# Get set of challenges where the status is pending AND you're the receiver.
+	def get_queryset(self):
+		result = Challenge.objects.filter(receiver=self.request.user) & Challenge.objects.filter(status=0)
+		return result
+
+class DetailView(generic.DetailView):
+	model = Challenge
+	template_name = 'detail.html'
+
 def index(request):
 	return HttpResponse("<h1>test</h1>")
 

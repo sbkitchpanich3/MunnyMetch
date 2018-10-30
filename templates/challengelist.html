@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container-fluid">
 <h1>Challenges!</h1>
+<div class="row">
+	<a href="{% url 'players:waitingchallenges' %}" role="button" class="btn btn-danger">Waiting Challenges</a>
+	<a href="#" role="button" class="btn btn-secondary">Pending Challenges</a>
+	<a href="#" role="button" class="btn btn-secondary">Finished Challenges</a>
+	<a href="{% url 'players:challengelist' %}" role="button" class="btn btn-secondary">Your Challenges</a>
+</div>
 <ul>
 {% for challenge in object_list %}
     <li>Challenger: {{ challenge.sender }} <br> 
@@ -9,11 +16,17 @@
 	Bet: {{ challenge.bet }}</li>
 	Status: 
 	{% if challenge.status == 0 %} Pending
+	<br><a href="{% url 'players:detail' challenge.id %}">Details/Report Results</a>
 	{% elif challenge.status == 1 %} In Progress
-	{% else %} Finished
+	<br><a href="{% url 'players:detail' challenge.id %}">Details/Report Results</a>
+	{% else %} Finished {% endif %}
+	{% if challenge.status == 0 and challenge.receiver == request.user %}
+	<br><a href="{% url 'players:detail' challenge.id %}">Accept Challenge</a>
 	{% endif %}
 {% empty %}
     <li>No challenges yet.</li>
 {% endfor %}
 </ul>
+</div>
+
 {% endblock %}

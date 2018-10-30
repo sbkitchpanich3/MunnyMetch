@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}YEET{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+<h1>Details!</h1>
+Challenger: {{ challenge.sender }}<br>
+Challenged: {{ challenge.receiver }}<br>
+Bet: {{ challenge.bet }}<br>
+
+<div class="row">
+	{% if challenge.status == 0 and challenge.receiver == request.user %}
+	<a href="#" role="button" class="btn btn-success">Accept</a>
+	<a href="#" role="button" class="btn btn-danger">Decline</a>
+	{% endif %}
+</div>
+</div>
+{% endblock %}
